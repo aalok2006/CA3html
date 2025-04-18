@@ -4,177 +4,148 @@
  * Add event listener on multiple elements
  */
 const addEventOnElements = function (elements, eventType, callback) {
-  if (elements) { // Check if elements exist
+  if (elements) {
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener(eventType, callback);
     }
   }
-}
+};
 
-/**
- * Mobile Navbar Toggle
- */
-const navbar = document.querySelector("[data-navbar]");
-const navToggler = document.querySelector("[data-nav-toggler]");
-const navbarLinks = document.querySelectorAll("[data-nav-link]");
+document.addEventListener('DOMContentLoaded', () => {
+  /**
+   * Mobile Navbar Toggle
+   */
+  const navbar = document.querySelector("[data-navbar]");
+  const navToggler = document.querySelector("[data-nav-toggler]");
+  const navbarLinks = document.querySelectorAll("[data-nav-link]");
 
-const toggleNavbar = function () {
-  navbar.classList.toggle("active");
-  navToggler.classList.toggle("active");
-  document.body.classList.toggle("nav-active"); // Use a specific class for body lock
-}
+  const toggleNavbar = function () {
+    navbar?.classList.toggle("active");
+    navToggler?.classList.toggle("active");
+    document.body.classList.toggle("nav-active");
+  };
 
-if (navToggler) { // Check if toggler exists before adding event
-    addEventOnElements([navToggler], "click", toggleNavbar);
-}
+  navToggler && addEventOnElements([navToggler], "click", toggleNavbar);
 
-const closeNavbar = function () {
-  navbar.classList.remove("active");
-  navToggler.classList.remove("active");
-  document.body.classList.remove("nav-active");
-}
+  const closeNavbar = function () {
+    navbar?.classList.remove("active");
+    navToggler?.classList.remove("active");
+    document.body.classList.remove("nav-active");
+  };
 
-if (navbarLinks) { // Check if links exist
-    addEventOnElements(navbarLinks, "click", closeNavbar);
-}
+  navbarLinks && addEventOnElements(navbarLinks, "click", closeNavbar);
 
+  /**
+   * Header scroll behavior
+   */
+  const header = document.querySelector("[data-header]");
+  let lastScrollY = window.scrollY;
 
-/**
- * Header scroll behavior
- */
-const header = document.querySelector("[data-header]");
-let lastScrollY = window.scrollY;
+  const handleHeaderScroll = function () {
+    if (!header) return;
 
-const handleHeaderScroll = function () {
-  if (lastScrollY < window.scrollY && window.scrollY > 150) {
-    // Scrolling down and past a certain point
-    header.classList.add("hide");
-  } else {
-    // Scrolling up or near the top
-    header.classList.remove("hide");
-  }
+    if (lastScrollY < window.scrollY && window.scrollY > 150) {
+      header.classList.add("hide");
+    } else {
+      header.classList.remove("hide");
+    }
 
-  if (window.scrollY > 50) {
-    header.classList.add("active"); // Add background/shadow when scrolled
-  } else {
-    header.classList.remove("active");
-  }
+    if (window.scrollY > 50) {
+      header.classList.add("active");
+    } else {
+      header.classList.remove("active");
+    }
 
-  lastScrollY = window.scrollY;
-}
+    lastScrollY = window.scrollY;
+  };
 
-if (header) { // Check if header exists
-    window.addEventListener("scroll", handleHeaderScroll);
-}
+  header && window.addEventListener("scroll", handleHeaderScroll);
 
-
-/**
- * Add active class to the current page's nav link
- */
-const highlightActiveNavLink = function () {
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html'; // Get current file name
-    const navLinks = document.querySelectorAll('.navbar-link[data-nav-link]'); // Ensure they are actual links
+  /**
+   * Highlight active nav link
+   */
+  const highlightActiveNavLink = function () {
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.navbar-link[data-nav-link]');
 
     navLinks.forEach(link => {
-        const linkPath = link.getAttribute('href').split('/').pop();
+      const linkPath = link.getAttribute('href').split('/').pop();
 
-        // Handle root path ('/' or 'index.html')
-        const isIndex = currentPath === 'index.html' || currentPath === '';
-        const linkIsIndex = linkPath === 'index.html' || linkPath === './' || linkPath === '/';
+      const isIndex = currentPath === 'index.html' || currentPath === '';
+      const linkIsIndex = linkPath === 'index.html' || linkPath === './' || linkPath === '/';
 
-        if ((isIndex && linkIsIndex) || (linkPath !== '' && currentPath === linkPath)) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
+      if ((isIndex && linkIsIndex) || (linkPath !== '' && currentPath === linkPath)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
-}
+  };
 
-// Call on page load
-document.addEventListener('DOMContentLoaded', highlightActiveNavLink);
+  highlightActiveNavLink();
 
+  /**
+   * Tab Functionality (Market Section)
+   */
+  const tabBtns = document.querySelectorAll(".market-tab .tab-btn");
+  const tabContents = document.querySelectorAll(".market-tab .tab-content");
 
-/**
- * Tab Functionality (Example for Market Section)
- */
-const tabBtns = document.querySelectorAll(".market-tab .tab-btn"); // Scope to market tabs
-const tabContents = document.querySelectorAll(".market-tab .tab-content"); // Scope to market content
-
-if (tabBtns.length > 0 && tabContents.length > 0) { // Check if tabs exist
+  if (tabBtns.length > 0 && tabContents.length > 0) {
     tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const tabId = this.dataset.tab; // Expect data-tab="content-id" on buttons
+      btn.addEventListener('click', function () {
+        const tabId = this.dataset.tab;
 
-            // Deactivate all buttons and content panels within this tab group
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
 
-            // Activate the clicked button
-            this.classList.add('active');
+        this.classList.add('active');
 
-            // Activate the corresponding content panel
-            const targetContent = document.getElementById(tabId);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            } else {
-                // Fallback: If no ID match, activate the first content panel
-                // Or handle error - for now, activate first matching panel if found
-                if (tabContents[0]) tabContents[0].classList.add('active');
-                 console.warn(`Tab content with ID "${tabId}" not found.`);
-            }
-        });
+        const targetContent = document.getElementById(tabId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        } else {
+          if (tabContents[0]) tabContents[0].classList.add('active');
+          console.warn(`Tab content with ID "${tabId}" not found.`);
+        }
+      });
     });
 
-    // Optional: Activate the first tab by default if none are marked active in HTML
     const isActiveTabPresent = document.querySelector(".market-tab .tab-btn.active");
     if (!isActiveTabPresent && tabBtns[0]) {
-        tabBtns[0].click(); // Simulate click on the first button
+      tabBtns[0].click();
     }
-}
+  }
 
-/**
- * Toggle 'active' class on 'Add to Fav' buttons (Visual Only)
- */
-const addToFavBtns = document.querySelectorAll("[data-add-to-fav]");
+  /**
+   * Toggle 'active' class on 'Add to Fav' buttons
+   */
+  const addToFavBtns = document.querySelectorAll("[data-add-to-fav]");
 
-const toggleActiveFav = function () {
-  this.classList.toggle("active");
-}
+  const toggleActiveFav = function () {
+    this.classList.toggle("active");
+  };
 
-if (addToFavBtns) { // Check if buttons exist
-    addEventOnElements(addToFavBtns, "click", toggleActiveFav);
-}
+  addToFavBtns && addEventOnElements(addToFavBtns, "click", toggleActiveFav);
 
+  /**
+   * Scroll Reveal
+   */
+  const sections = document.querySelectorAll("[data-section]");
 
-/**
- * Scroll Reveal Effect
- */
-const sections = document.querySelectorAll("[data-section]");
-
-const scrollReveal = function () {
-    if (!sections) return; // Exit if no sections found
+  const scrollReveal = function () {
+    if (!sections) return;
 
     for (let i = 0; i < sections.length; i++) {
-        // Add revealed class initially to apply start state (opacity 0, transform)
-        if (!sections[i].classList.contains('revealed')) {
-            sections[i].classList.add('revealed');
-        }
+      if (!sections[i].classList.contains('revealed')) {
+        sections[i].classList.add('revealed');
+      }
 
-        // Check if section is in viewport
-        if (sections[i].getBoundingClientRect().top < window.innerHeight / 1.2) { // Adjust trigger point
-            sections[i].classList.add("active");
-        }
-        // Optional: Remove active class when scrolling up out of view
-        // else {
-        //   sections[i].classList.remove("active");
-        // }
+      if (sections[i].getBoundingClientRect().top < window.innerHeight / 1.2) {
+        sections[i].classList.add("active");
+      }
     }
-}
+  };
 
-// Initial check on load
-scrollReveal();
-
-// Add event listener for scroll
-window.addEventListener("scroll", scrollReveal);
-
-console.log("CryptoX Script Loaded");
+  scrollReveal();
+  window.addEventListener("scroll", scrollReveal);
+});
