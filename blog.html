@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - CryptoX Insights</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./images/favicon.svg" type="image/svg+xml">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+   <header class="header" data-header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="./images/logo.svg" width="32" height="32" alt="CryptoX logo">
+        CryptoX
+      </a>
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li class="navbar-item"><a href="index.html" class="navbar-link" data-nav-link>Homepage</a></li>
+          <li class="navbar-item"><a href="buy.html" class="navbar-link" data-nav-link>Buy Crypto</a></li>
+          <li class="navbar-item"><a href="markets.html" class="navbar-link" data-nav-link>Markets</a></li>
+          <li class="navbar-item"><a href="#" class="navbar-link" data-nav-link>Sell Crypto</a></li>
+          <li class="navbar-item"><a href="blog.html" class="navbar-link" data-nav-link>Blog</a></li>
+          <li class="navbar-item"><a href="#" class="navbar-link" data-nav-link>BITUSDT</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle-btn" aria-label="Toggle menu" data-nav-toggler>
+        <span class="line line-1"></span><span class="line line-2"></span><span class="line line-3"></span>
+      </button>
+      <a href="#" class="btn btn-outline">Wallet</a>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- BLOG SECTION -->
+      <section class="section blog-section" aria-labelledby="blog-title" data-section>
+        <div class="container">
+
+          <h1 class="h1 section-title text-center" id="blog-title">CryptoX Blog</h1>
+          <p class="section-text text-center">
+            Latest news, insights, and educational content about cryptocurrency and blockchain.
+          </p>
+
+          <!-- Blog Post Grid -->
+          <div class="blog-grid">
+
+            <!-- Blog Post Card 1 -->
+            <div class="blog-card">
+              <figure class="blog-card-banner">
+                <img src="./images/blog-placeholder-1.jpg" width="400" height="200" loading="lazy" alt="Abstract blockchain graphic" class="w-100">
+              </figure>
+              <div class="blog-card-content">
+                 <div class="blog-card-meta">
+                    <span><ion-icon name="calendar-outline"></ion-icon> Oct 26, 2024</span>
+                    <span><ion-icon name="person-outline"></ion-icon> Admin</span>
+                 </div>
+                 <h3 class="h3 blog-card-title">
+                   <a href="blog-post.html">Understanding Layer 2 Scaling Solutions</a>
+                 </h3>
+                 <p class="blog-card-excerpt">
+                   Dive deep into how Layer 2 technologies like Optimistic Rollups and ZK-Rollups are helping scale Ethereum and reduce gas fees...
+                 </p>
+                 <a href="blog-post.html" class="btn btn-outline">Read More</a>
+              </div>
+            </div>
+
+             <!-- Blog Post Card 2 -->
+            <div class="blog-card">
+              <figure class="blog-card-banner">
+                <img src="./images/blog-placeholder-2.jpg" width="400" height="200" loading="lazy" alt="Cryptocurrency coins illustration" class="w-100">
+              </figure>
+              <div class="blog-card-content">
+                 <div class="blog-card-meta">
+                    <span><ion-icon name="calendar-outline"></ion-icon> Oct 24, 2024</span>
+                    <span><ion-icon name="person-outline"></ion-icon> Jane Doe</span>
+                 </div>
+                 <h3 class="h3 blog-card-title">
+                   <a href="blog-post.html">Top 5 DeFi Trends to Watch in Q4 2024</a>
+                 </h3>
+                 <p class="blog-card-excerpt">
+                   Explore the evolving landscape of Decentralized Finance (DeFi), including liquid staking, real-world assets (RWAs), and more...
+                 </p>
+                 <a href="blog-post.html" class="btn btn-outline">Read More</a>
+              </div>
+            </div>
+
+             <!-- Blog Post Card 3 -->
+            <div class="blog-card">
+              <figure class="blog-card-banner">
+                <img src="./images/blog-placeholder-3.jpg" width="400" height="200" loading="lazy" alt="Secure lock on digital background" class="w-100">
+              </figure>
+              <div class="blog-card-content">
+                 <div class="blog-card-meta">
+                    <span><ion-icon name="calendar-outline"></ion-icon> Oct 22, 2024</span>
+                    <span><ion-icon name="person-outline"></ion-icon> Crypto Secure</span>
+                 </div>
+                 <h3 class="h3 blog-card-title">
+                   <a href="blog-post.html">How to Keep Your Crypto Assets Safe: Best Practices</a>
+                 </h3>
+                 <p class="blog-card-excerpt">
+                   Learn essential security tips, from using hardware wallets to recognizing phishing scams, to protect your digital investments...
+                 </p>
+                 <a href="blog-post.html" class="btn btn-outline">Read More</a>
+              </div>
+            </div>
+
+             <!-- Add more blog cards as needed -->
+
+          </div>
+
+           <!-- Optional Pagination -->
+           <!-- <nav aria-label="Blog Pagination" class="margin-top-40" style="text-align: center;">
+             <ul style="display: inline-flex; gap: 10px;">
+               <li><a href="#" class="btn btn-outline">1</a></li>
+               <li><a href="#" class="btn btn-outline">2</a></li>
+               <li><span class="btn btn-primary">3</span></li>
+               <li><a href="#" class="btn btn-outline">4</a></li>
+             </ul>
+           </nav> -->
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+   <footer class="footer">
+    <!-- Footer content copied from index.html -->
+    <div class="footer-top" data-section> <div class="container"> <div class="footer-brand"> <a href="index.html" class="logo"><img src="./images/logo.svg" width="50" height="50" alt="CryptoX logo">CryptoX</a> <p class="footer-text"> Your trusted platform for digital asset trading. Secure, fast, and reliable. </p> <h3 class="footer-title">Contact</h3> <a href="tel:+1234567890" class="footer-contact-link">+1 (234) 567-890</a> <a href="mailto:support@cryptox.com" class="footer-contact-link">support@cryptox.com</a> <address class="footer-contact-link"> 123 Crypto Lane, Blockchain City, BC 90210 </address> </div> <ul class="footer-list"> <li><p class="footer-list-title">Products</p></li> <li><a href="#" class="footer-link">Spot</a></li> <li><a href="#" class="footer-link">Futures</a></li> <li><a href="#" class="footer-link">Margin</a></li> <li><a href="#" class="footer-link">Staking</a></li> <li><a href="#" class="footer-link">Launchpad</a></li> <li><a href="#" class="footer-link">NFT Marketplace</a></li> </ul> <ul class="footer-list"> <li><p class="footer-list-title">Services</p></li> <li><a href="buy.html" class="footer-link">Buy Crypto</a></li> <li><a href="markets.html" class="footer-link">Markets</a></li> <li><a href="#" class="footer-link">Trading Fees</a></li> <li><a href="#" class="footer-link">Affiliate Program</a></li> <li><a href="#" class="footer-link">Referral Program</a></li> <li><a href="#" class="footer-link">API</a></li> </ul> <ul class="footer-list"> <li><p class="footer-list-title">Support</p></li> <li><a href="#" class="footer-link">Help Center</a></li> <li><a href="#" class="footer-link">Announcements</a></li> <li><a href="#" class="footer-link">User Feedback</a></li> <li><a href="#" class="footer-link">Submit a Request</a></li> <li><a href="#" class="footer-link">API Documentation</a></li> <li><a href="#" class="footer-link">Trading Rules</a></li> </ul> <ul class="footer-list"> <li><p class="footer-list-title">About Us</p></li> <li><a href="#" class="footer-link">About CryptoX</a></li> <li><a href="#" class="footer-link">Careers</a></li> <li><a href="blog.html" class="footer-link">Blog</a></li> <li><a href="#" class="footer-link">Terms of Service</a></li> <li><a href="#" class="footer-link">Privacy Policy</a></li> <li><a href="#" class="footer-link">Business Contacts</a></li> </ul> </div> </div>
+    <div class="footer-bottom"> <div class="container"> <p class="copyright"> &copy; 2024 CryptoX. All Rights Reserved. </p> <ul class="social-list"> <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li> <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li> <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li> <li><a href="#" class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li> <li><a href="#" class="social-link"><ion-icon name="logo-discord"></ion-icon></a></li> </ul> </div> </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="./script.js"></script>
+
+  <!-- IonIcons -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
